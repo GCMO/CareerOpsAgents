@@ -1,0 +1,28 @@
+# career-ops agent workflow queue
+# States: discovered | evaluated | skipped | packaged | form_ready | approved | submitted | follow_up_due
+# Policy: config/profile.yml → automation
+
+version: 1
+updated: "2026-09-10"
+
+defaults:
+  submit_policy: human_approve_only
+  auto_skip_below: 4.0
+  auto_package_at_or_above: 4.5
+
+# Entries keyed by report number once evaluated; pre-eval use url as id
+jobs: []
+
+# Example entry (do not leave real PII here — agents append real rows):
+# - id: "discovered-hm-portfolio-brands"
+#   url: "https://jobs.smartrecruiters.com/HMGroup/..."
+#   company: "H&M Group"
+#   role: "Senior Software Engineer - Frontend (Portfolio Brands)"
+#   state: discovered
+#   score: null
+#   report: null
+#   artifacts:
+#     cv_pdf: null
+#     cl_pdf: null
+#   notes: ""
+#   updated: "2026-09-10"
