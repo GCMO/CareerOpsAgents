@@ -34,7 +34,8 @@ Read/write `data/workflow.yml`. Canonical states:
 | `package {num...}` | Packager for listed report nums (override allowed for 4.0–4.4) |
 | `approve submit #{num}` | Set `approved` → Submitter may click Apply/Submit |
 | `/career-ops scan` | Scout (manual) |
-| `/career-ops pipeline` | Ranker on pending URLs |
+| `/career-ops pipeline` | Ranker on pending URLs (legacy inbox) |
+| `/career-ops ranker` | Ranker on workflow queue (P1) |
 | `/career-ops apply` | Form Agent (fill → stop) |
 
 ## Agent roles
@@ -97,16 +98,25 @@ CL skeleton (keep structure, rewrite content):
 
 ## Monday Automation (Scout only)
 
-When triggered by schedule:
+When triggered by schedule (04:00 UTC):
 1. Checkout this repo
 2. `node scan.mjs`
 3. Update `data/pipeline.md` shortlists
-4. Upsert new `discovered` rows in `data/workflow.yml`
+4. `node workflow-runner.mjs sync-discovered`
 5. Reply with counts: fetched / new / Sweden FE-FS / remote FE-FS + top links
-6. Stop — no Ranker/Packager/Submit
+6. Stop — Ranker is a separate run (05:00 UTC)
+
+## Monday Automation (Ranker — P1)
+
+When triggered by schedule (05:00 UTC) or chat `/career-ops ranker`:
+1. Follow `modes/ranker.md`
+2. `sync-discovered` → `queue` → evaluate top_k → mark states
+3. Draft PR with reports + workflow.yml + tracker merges
+4. Stop — no Packager / Form / Submit
 
 ## Ethical caps
 
 - Never mass-apply; quality over quantity
 - Never submit without human approval
 - Strongly discourage applying when score &lt; 4.0
+- Ranker processes at most `automation.ranker.top_k` (default 10) per run

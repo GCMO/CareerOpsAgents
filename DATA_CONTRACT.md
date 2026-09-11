@@ -45,6 +45,8 @@ These files contain system logic, scripts, templates, and instructions that impr
 | `modes/training.md` | Training evaluation instructions |
 | `modes/patterns.md` | Pattern analysis instructions |
 | `modes/followup.md` | Follow-up cadence instructions |
+| `modes/orchestrate.md` | End-to-end agent orchestration |
+| `modes/ranker.md` | Ranker (evaluate discovered queue) |
 | `modes/de/*` | German language modes |
 | `CLAUDE.md` | Agent instructions |
 | `AGENTS.md` | Codex instructions |

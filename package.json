@@ -14,7 +14,10 @@
     "update": "node update-system.mjs apply",
     "rollback": "node update-system.mjs rollback",
     "liveness": "node check-liveness.mjs",
-    "scan": "node scan.mjs"
+    "scan": "node scan.mjs",
+    "workflow:sync": "node workflow-runner.mjs sync-discovered",
+    "workflow:queue": "node workflow-runner.mjs queue",
+    "workflow:status": "node workflow-runner.mjs status"
   },
   "keywords": [
     "ai",

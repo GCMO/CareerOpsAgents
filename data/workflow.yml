@@ -1,28 +1,2692 @@
-# career-ops agent workflow queue
-# States: discovered | evaluated | skipped | packaged | form_ready | approved | submitted | follow_up_due
-# Policy: config/profile.yml → automation
-
 version: 1
-updated: "2026-09-10"
-
+updated: '2026-09-11'
 defaults:
   submit_policy: human_approve_only
-  auto_skip_below: 4.0
+  auto_skip_below: 4
   auto_package_at_or_above: 4.5
-
-# Entries keyed by report number once evaluated; pre-eval use url as id
-jobs: []
-
-# Example entry (do not leave real PII here — agents append real rows):
-# - id: "discovered-hm-portfolio-brands"
-#   url: "https://jobs.smartrecruiters.com/HMGroup/..."
-#   company: "H&M Group"
-#   role: "Senior Software Engineer - Frontend (Portfolio Brands)"
-#   state: discovered
-#   score: null
-#   report: null
-#   artifacts:
-#     cv_pdf: null
-#     cl_pdf: null
-#   notes: ""
-#   updated: "2026-09-10"
+jobs:
+  - id: new-terms-ab-fullstackutvecklare-java-react-390ac3
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31348085
+    company: New Terms AB
+    role: Fullstackutvecklare Java & React
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: academic-work-sweden-ab-ar-du-en-fullstackutvecklare-med-ambition-att-va-390b42
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31349313
+    company: ACADEMIC WORK SWEDEN AB
+    role: Är du en fullstackutvecklare med ambition att växa mot en leadroll?
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: avaron-ab-senior-frontendutvecklare-3924bb
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31363428
+    company: Avaron AB
+    role: Senior Frontendutvecklare
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: axis-communications-aktiebolag-senior-front-end-developer-lund-39073e
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31340872
+    company: AXIS COMMUNICATIONS AKTIEBOLAG
+    role: Senior Front-End Developer, Lund
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: friday-vast-ab-senior-fullstackutvecklare-till-innovativt-digit-38fa78
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31333553
+    company: Friday Väst AB
+    role: Senior Fullstackutvecklare till Innovativt Digitalt Produktbolag
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: h-m-hennes-mauritz-gbc-ab-senior-software-engineer-frontend-portfolio-bran-391961
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31359526
+    company: H & M Hennes & Mauritz GBC AB
+    role: Senior Software Engineer - Frontend (Portfolio Brands)
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: maxitech-ab-senior-fullstack-devops-utvecklare-3933c2
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31375611
+    company: Maxitech AB
+    role: Senior Fullstack-/DevOps-utvecklare
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: nordicrule-ab-senior-full-stack-developer-till-baemingo-39252f
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31364427
+    company: Nordicrule AB
+    role: Senior Full-stack Developer till Baemingo
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: oddwork-sweden-ab-senior-fullstack-developer-team-lead-to-wioniq-n-3918e9
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31358432
+    company: Oddwork Sweden AB
+    role: Senior Fullstack Developer & Team Lead to Wioniq Nordic // Borås
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: polismyndigheten-senior-fullstackutvecklare-till-polisens-sektion-3925a7
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31365543
+    company: Polismyndigheten
+    role: Senior fullstackutvecklare till polisens sektion för mobil systemutveckling
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: tng-group-ab-senior-fullstack-developer-till-attendo-remote-39079f
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31341337
+    company: TNG Group AB
+    role: Senior Fullstack Developer till Attendo, Remote
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: tng-group-ab-senior-frontend-engineer-product-tech-to-lendo-39269f
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31367941
+    company: TNG Group AB
+    role: Senior Frontend Engineer – Product & Tech to Lendo
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: veritaz-ab-senior-frontend-engineer-18855-18868-18856-3941c7
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31385118
+    company: Veritaz AB
+    role: Senior Frontend Engineer - 18855/18868/18856
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: voyado-ab-senior-software-engineer-frontend-focus-onsite-m-3934b3
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31377833
+    company: Voyado AB
+    role: Senior Software Engineer (Frontend Focus) - Onsite Messaging
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: wrknest-ab-senior-frontend-developer-390826
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31342844
+    company: Wrknest AB
+    role: Senior Frontend Developer 💻
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: zynca-sverige-ab-senior-front-end-developer-391537
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31350000
+    company: Zynca Sverige AB
+    role: Senior Front-end Developer
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: academic-work-sweden-ab-intresseanmalan-fullstack-engineer-39334b
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31374594
+    company: ACADEMIC WORK SWEDEN AB
+    role: Intresseanmälan Fullstack Engineer
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: avaron-ab-expert-full-stack-developer-3940f5
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31383779
+    company: Avaron AB
+    role: Expert Full-Stack Developer
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: broderna-hansson-h-tryck-aktiebolag-webbutvecklare-till-h-tryck-i-markaryd-3915cd
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31351901
+    company: BRÖDERNA HANSSON H-TRYCK AKTIEBOLAG
+    role: Webbutvecklare till H Tryck i Markaryd
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: centio-consulting-group-ab-c-utvecklare-frontend-backend-inom-trafikstyrnin-3924c6
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31363776
+    company: Centio Consulting Group AB
+    role: C++-utvecklare – Frontend & Backend inom trafikstyrningssystem
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: dynava-ab-full-stack-ai-developer-38fd23
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31339124
+    company: Dynava AB
+    role: Full Stack AI Developer
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: epiroc-rock-drills-aktiebolag-software-developer-frontend-38ebf0
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31322678
+    company: Epiroc Rock Drills Aktiebolag
+    role: Software Developer - Frontend
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: friday-vast-ab-fullstack-engineer-38f913
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31330302
+    company: Friday Väst AB
+    role: Fullstack Engineer
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: hirely-ab-webbutvecklare-391879
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31357586
+    company: Hirely AB
+    role: Webbutvecklare
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: kumpan-sweden-ab-front-end-fullstack-utvecklare-till-produktbolag-38ddc5
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31312125
+    company: Kumpan Sweden AB
+    role: Front end/fullstack utvecklare till produktbolag
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: mateo-kostplattform-ab-fullstack-utvecklare-till-vaxande-saas-bolag-7h--3926fd
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31368379
+    company: Mateo Kostplattform AB
+    role: Fullstack-utvecklare till växande SaaS-bolag (7h heltid)
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: moonwise-ab-frontend-developer-39424b
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31386562
+    company: Moonwise AB
+    role: Frontend Developer
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: multiply-teknik-it-ab-full-stack-developers-with-cloud-expertise-3942b4
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31387269
+    company: Multiply Teknik & IT AB
+    role: Full-Stack Developers with Cloud Expertise
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: nlmp-consulting-ab-fullstack-developer-3932cf
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31373340
+    company: NLMP Consulting AB
+    role: Fullstack Developer
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: nordicrule-ab-fullstackutvecklare-till-innovativt-techbolag-38dcf3
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31310731
+    company: Nordicrule AB
+    role: Fullstackutvecklare till Innovativt techbolag
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: sigma-technology-software-solutions-ab-front-end-engineer-find-my-team-3908f8
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31344201
+    company: Sigma Technology Software Solutions AB
+    role: Front-end Engineer, Find My Team
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: softhouse-nordic-ab-fullstackutvecklare-industriell-it-3932ce
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31373306
+    company: SOFTHOUSE NORDIC AB
+    role: Fullstackutvecklare (Industriell IT)
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: svea-bank-ab-backendutvecklare-med-frontenderfarenhet-till-sv-38e10b
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31319742
+    company: Svea Bank AB
+    role: Backendutvecklare med frontenderfarenhet till Svea Bank
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: swedbank-ab-software-engineer-full-stack-38ed58
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31325931
+    company: Swedbank AB
+    role: Software Engineer – Full Stack
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: talendary-ab-fullstack-engineer-3931de
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31371115
+    company: Talendary AB
+    role: Fullstack Engineer
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: tendium-ab-fullstack-ai-engineer-3941cb
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31385277
+    company: Tendium AB
+    role: Fullstack AI Engineer
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: velora-health-ab-medior-full-stack-developer-typescript-healthtec-38dec1
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31314637
+    company: Velora Health AB
+    role: Medior Full-Stack Developer (TypeScript) - HealthTech
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: veritaz-ab-backend-focused-fullstack-engineer-18912-3941c7
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31385109
+    company: Veritaz AB
+    role: Backend-Focused Fullstack Engineer - 18912
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: waitwhile-frontend-software-engineer-c54db9
+    url: https://careers.waitwhile.com/jobs/8254729-frontend-software-engineer
+    company: Waitwhile
+    role: Frontend Software Engineer
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: taxicaller-nordic-ab-react-native-redux-app-utvecklare-38fb5d
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31335477
+    company: TaxiCaller Nordic AB
+    role: React Native / Redux App-utvecklare
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: 2complete-ab-lead-developer-38ebf0
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31322628
+    company: 2Complete AB
+    role: Lead Developer
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: academic-work-sweden-ab-fullstackutvecklare-c-till-globalt-teknikbolag-39349c
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31377229
+    company: ACADEMIC WORK SWEDEN AB
+    role: Fullstackutvecklare C# till globalt teknikbolag
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: alten-sverige-aktiebolag-senior-application-developer-control-systems-pow-38ee3a
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31327745
+    company: Alten Sverige Aktiebolag
+    role: Senior Application Developer  Control Systems & Powertrain
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: animarum-ab-senior-software-developer-3933ca
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31375834
+    company: ANIMARUM AB
+    role: Senior Software Developer
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: avaron-ab-senior-dynamics-365-crm-developer-3942c7
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31387749
+    company: Avaron AB
+    role: Senior Dynamics 365 CRM Developer
+    mode: Sweden
+    region: Sweden
+    state: skipped
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: .NET-only / no modern JS-TS frontend path
+    updated: '2026-09-11'
+    source: shortlist
+  - id: avaron-ab-fullstackutvecklare-inom-net-och-angular-38e0f5
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31319161
+    company: Avaron AB
+    role: Fullstackutvecklare inom .NET och Angular
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: fasticon-kompetens-ab-technical-developer-project-leader-39087d
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31343042
+    company: Fasticon Kompetens AB
+    role: Technical Developer / Project Leader
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: i-ray-it-solutions-ab-senior-bi-developer-38eaf1
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31320067
+    company: I-Ray IT Solutions AB
+    role: Senior BI Developer
+    mode: Sweden
+    region: Sweden
+    state: skipped
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: BI-only — outside target archetypes
+    updated: '2026-09-11'
+    source: shortlist
+  - id: knowit-aktiebolag-publ-senior-c-utvecklare-inom-inbyggda-system-393528
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31378895
+    company: Knowit Aktiebolag (publ)
+    role: Senior C++-utvecklare inom inbyggda system
+    mode: Sweden
+    region: Sweden
+    state: skipped
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: Embedded/systems-only — outside target archetypes
+    updated: '2026-09-11'
+    source: shortlist
+  - id: new-terms-ab-senior-utvecklare-inom-data-och-fordonsdiagnosti-39269f
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31367913
+    company: New Terms AB
+    role: Senior utvecklare inom data och fordonsdiagnostik
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: onepartnergroup-norr-ab-senior-utvecklare-39342c
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31376356
+    company: OnePartnerGroup Norr AB
+    role: Senior utvecklare
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: tng-group-ab-senior-bi-utvecklare-till-vr-sverige-stockholm-3941e5
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31385942
+    company: TNG Group AB
+    role: Senior BI Utvecklare till VR Sverige, Stockholm
+    mode: Sweden
+    region: Sweden
+    state: skipped
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: BI-only — outside target archetypes
+    updated: '2026-09-11'
+    source: shortlist
+  - id: vertigis-ab-lead-developer-inom-api-webbutveckling-38edc1
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31326625
+    company: VertiGIS AB
+    role: Lead Developer inom API & webbutveckling
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: 2complete-ab-bi-utvecklare-till-agio-392446
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31362418
+    company: 2Complete AB
+    role: BI utvecklare till Agio
+    mode: Sweden
+    region: Sweden
+    state: skipped
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: BI-only — outside target archetypes
+    updated: '2026-09-11'
+    source: shortlist
+  - id: 2complete-ab-developer-38ebf0
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31322610
+    company: 2Complete AB
+    role: Developer
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: abb-ab-software-developer-to-abb-39407a
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31382591
+    company: ABB AB
+    role: Software Developer to ABB
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: agile-resources-ab-backend-developer-3931ea
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31371444
+    company: Agile Resources AB
+    role: Backend Developer
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: agile-resources-ab-business-developer-controlling-392690
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31367500
+    company: Agile Resources AB
+    role: Business Developer Controlling
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: aktiebolaget-skf-advanced-simulation-software-developer-391781
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31355197
+    company: AKTIEBOLAGET SKF
+    role: Advanced Simulation Software Developer
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: alten-sverige-aktiebolag-hil-developer-393ff6
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31381161
+    company: Alten Sverige Aktiebolag
+    role: HIL Developer
+    mode: Sweden
+    region: Sweden
+    state: skipped
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: Embedded/systems-only — outside target archetypes
+    updated: '2026-09-11'
+    source: shortlist
+  - id: avaron-ab-backend-developer-with-interest-in-it-security-39424e
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31386647
+    company: Avaron AB
+    role: Backend Developer with Interest in IT Security
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: avaron-ab-back-end-developer-39424e
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31386602
+    company: Avaron AB
+    role: Back-End Developer
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: brand-utrymningskontroll-i-sverige-ab-digital-utvecklare-web-it-3932de
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31373762
+    company: Brand & Utrymningskontroll i Sverige AB
+    role: DIGITAL UTVECKLARE / WEB & IT
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: cabeza-rekrytering-och-konsulting-ab-integration-developer-till-pagen-3924af
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31363139
+    company: Cabeza rekrytering och konsulting AB
+    role: Integration Developer till Pågen
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: cilbuper-it-ab-software-developer-390720
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31340034
+    company: cilbuper IT AB
+    role: Software Developer
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: cognizant-technology-solutions-sweden-ab-snowflake-developer-38fa13
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31332941
+    company: Cognizant Technology Solutions Sweden AB
+    role: Snowflake Developer
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: dellner-couplers-aktiebolag-application-integration-developer-392528
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31364277
+    company: Dellner Couplers Aktiebolag
+    role: Application/Integration developer
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: deploja-ab-front-end-data-engineer-392627
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31366844
+    company: Deploja AB
+    role: Front End Data Engineer
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: epical-sweden-ab-azure-integration-developer-38fa04
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31332550
+    company: Epical Sweden AB
+    role: Azure Integration Developer
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: epiroc-rock-drills-aktiebolag-mes-developer-39316a
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31370141
+    company: Epiroc Rock Drills Aktiebolag
+    role: MES Developer
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: ericsson-ab-system-developer-ran-oam-management-391956
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31359223
+    company: ERICSSON AB
+    role: System Developer - RAN OAM Management
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: evidensia-sverige-ab-crm-analyst-bi-developer-38ee3e
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31327879
+    company: Evidensia Sverige AB
+    role: CRM Analyst & BI Developer
+    mode: Sweden
+    region: Sweden
+    state: skipped
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: BI-only — outside target archetypes
+    updated: '2026-09-11'
+    source: shortlist
+  - id: forsvarsmakten-must-soker-utvecklare-med-ai-kompetens-390798
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31341133
+    company: FÖRSVARSMAKTEN
+    role: MUST söker utvecklare med AI-kompetens
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: fortnox-ab-developer-392697
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31367713
+    company: Fortnox AB
+    role: Developer
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: friday-vast-ab-backend-developer-till-lannebo-kapitalforvaltnin-38ed3a
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31325108
+    company: Friday Väst AB
+    role: Backend Developer till Lannebo Kapitalförvaltning
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: futuria-people-ab-utvecklare-inom-dynamics-ce-392766
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31369053
+    company: Futuria People AB
+    role: Utvecklare inom Dynamics CE
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: hitachi-energy-sweden-ab-r-d-software-developer-390ad2
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31348468
+    company: Hitachi Energy Sweden AB
+    role: R&D Software Developer
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: humanit-stockholm-ab-ai-utvecklare-3916a0
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31353393
+    company: Humanit Stockholm AB
+    role: AI-utvecklare
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: huvudkontoret-norr-ab-ai-utvecklare-391952
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31359118
+    company: Huvudkontoret Norr AB
+    role: AI-utvecklare
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: infinity-it-consulting-ab-ai-utvecklare-3923c3
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31361018
+    company: Infinity IT Consulting AB
+    role: AI utvecklare
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: intensogruppen-ab-utvecklare-inom-inbyggda-system-konsultuppdrag-35bcd8
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31167372
+    company: Intensogruppen AB
+    role: Utvecklare inom inbyggda system, Konsultuppdrag
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: knowit-aktiebolag-publ-experienced-software-developer-393527
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31378859
+    company: Knowit Aktiebolag (publ)
+    role: Experienced Software Developer
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: kungsbacka-kommun-utvecklare-till-forvaltningen-for-service-392614
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31366300
+    company: KUNGSBACKA KOMMUN
+    role: Utvecklare till Förvaltningen för Service
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: lansforsakringar-ab-publ-servicenow-utvecklare-3932d6
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31373573
+    company: Länsförsäkringar AB (publ)
+    role: ServiceNow Utvecklare
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: lansforsakringar-ab-publ-crm-utvecklare-3932d7
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31373598
+    company: Länsförsäkringar AB (publ)
+    role: CRM-Utvecklare
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: lansstyrelsen-i-jamtlands-lan-utvecklare-civilt-forsvar-3924c2
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31363628
+    company: LÄNSSTYRELSEN I JÄMTLANDS LÄN
+    role: Utvecklare civilt försvar
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: molnlycke-health-care-ab-software-developer-3925a7
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31365527
+    company: MÖLNLYCKE HEALTH CARE AB
+    role: Software Developer
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: nexer-telescope-ab-andoid-infotainment-developer-391552
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31350764
+    company: Nexer Telescope AB
+    role: Andoid Infotainment Developer
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: nexer-telescope-ab-c-developer-391551
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31350731
+    company: Nexer Telescope AB
+    role: C++ Developer
+    mode: Sweden
+    region: Sweden
+    state: skipped
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: Embedded/systems-only — outside target archetypes
+    updated: '2026-09-11'
+    source: shortlist
+  - id: nordea-bank-abp-filial-i-sverige-model-and-python-developer-counterparty-credit-r-38de51
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31313752
+    company: NORDEA BANK ABP, FILIAL I SVERIGE
+    role: Model and Python Developer - Counterparty Credit Risk
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: norion-bank-ab-system-developer-39267e
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31367094
+    company: Norion Bank AB
+    role: System Developer
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: nxt-interim-goteborg-ab-ai-utvecklare-ai-ingenjor-39252b
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31364318
+    company: NXT Interim Göteborg AB
+    role: AI-utvecklare/AI-ingenjör
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: pagen-aktiebolag-integration-developer-393352
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31374786
+    company: PÅGEN AKTIEBOLAG
+    role: Integration Developer
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: perido-ab-iam-specialister-myndighet-tekniker-utvecklare-o-39352b
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31378910
+    company: Perido AB
+    role: IAM-specialister- myndighet  Tekniker, Utvecklare och  Lösningsarkitekter!
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: region-halland-bi-utvecklare-till-sussa-data-och-analys-3941e2
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31385844
+    company: REGION HALLAND
+    role: BI-utvecklare till Sussa Data och Analys
+    mode: Sweden
+    region: Sweden
+    state: skipped
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: BI-only — outside target archetypes
+    updated: '2026-09-11'
+    source: shortlist
+  - id: region-jonkopings-lan-utvecklare-bibliotek-38f997
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31331791
+    company: REGION JÖNKÖPINGS LÄN
+    role: Utvecklare bibliotek
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: region-norrbotten-bi-utvecklare-till-sussa-data-och-analys-lulea-3941e6
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31385996
+    company: REGION NORRBOTTEN
+    role: BI Utvecklare till Sussa data och analys, Luleå
+    mode: Sweden
+    region: Sweden
+    state: skipped
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: BI-only — outside target archetypes
+    updated: '2026-09-11'
+    source: shortlist
+  - id: region-orebro-lan-bi-utvecklare-till-sussa-data-och-analys-3942ce
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31387965
+    company: REGION ÖREBRO LÄN
+    role: BI Utvecklare till Sussa data och analys
+    mode: Sweden
+    region: Sweden
+    state: skipped
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: BI-only — outside target archetypes
+    updated: '2026-09-11'
+    source: shortlist
+  - id: region-sormland-bi-utvecklare-till-sussa-data-och-analys-39423c
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31386149
+    company: REGION SÖRMLAND
+    role: BI-utvecklare till Sussa data och analys
+    mode: Sweden
+    region: Sweden
+    state: skipped
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: BI-only — outside target archetypes
+    updated: '2026-09-11'
+    source: shortlist
+  - id: riserank-ab-business-systems-developer-till-riserank-38e097
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31318786
+    company: RiseRank AB
+    role: Business Systems Developer till RiseRank
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: robert-bosch-aktiebolag-software-developer-m-f-d-hvac-and-heat-pump-syst-390971
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31345373
+    company: Robert Bosch Aktiebolag
+    role: Software Developer (m/f/d) HVAC and Heat Pump Systems
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: saab-aktiebolag-ifs-system-developer-3934a0
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31377305
+    company: SAAB AKTIEBOLAG
+    role: IFS System Developer
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: sandvik-aktiebolag-learning-developer-38eb00
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31320466
+    company: Sandvik Aktiebolag
+    role: Learning Developer
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: sca-forest-products-aktiebolag-ignition-utvecklare-390826
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31342839
+    company: SCA Forest Products Aktiebolag
+    role: Ignition-utvecklare
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: siemens-energy-ab-software-developer-394172
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31384992
+    company: Siemens Energy AB
+    role: Software Developer
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: snowprint-studios-ab-backend-developer-38fa00
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31332451
+    company: Snowprint Studios AB
+    role: Backend Developer
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: softhouse-nordic-ab-ai-ml-utvecklare-till-softhouse-i-lulea-3932cf
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31373360
+    company: SOFTHOUSE NORDIC AB
+    role: AI/ML Utvecklare till Softhouse i Luleå
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: softhouse-nordic-ab-erfaren-utvecklare-till-softhouse-i-lulea-3932ce
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31373317
+    company: SOFTHOUSE NORDIC AB
+    role: Erfaren utvecklare till Softhouse i Luleå
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: softhouse-nordic-ab-utvecklare-med-gis-erfarenhet-3932cb
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31373251
+    company: SOFTHOUSE NORDIC AB
+    role: Utvecklare med GIS-erfarenhet
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: softhouse-nordic-ab-ai-ml-utvecklare-390795
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31341086
+    company: SOFTHOUSE NORDIC AB
+    role: AI/ML-utvecklare
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: softube-ab-dsp-developer-38f914
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31330394
+    company: SOFTUBE AB
+    role: DSP Developer
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: strangnas-kommun-utvecklare-till-it-drift-och-infrastruktur-stran-390966
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31345047
+    company: STRÄNGNÄS KOMMUN
+    role: Utvecklare till IT Drift och Infrastruktur, Strängnäs kommun
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: svenska-kraftnat-power-bi-utvecklare-38ee23
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31327135
+    company: SVENSKA KRAFTNÄT
+    role: Power BI-utvecklare
+    mode: Sweden
+    region: Sweden
+    state: skipped
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: BI-only — outside target archetypes
+    updated: '2026-09-11'
+    source: shortlist
+  - id: swegon-operations-aktiebolag-application-specialist-dynamics-365-field-servic-3932c7
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31373113
+    company: Swegon Operations Aktiebolag
+    role: Application Specialist - Dynamics 365 Field Service Developer
+    mode: Sweden
+    region: Sweden
+    state: skipped
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: .NET-only / no modern JS-TS frontend path
+    updated: '2026-09-11'
+    source: shortlist
+  - id: synteda-ab-servicenow-utvecklare-39359c
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31379884
+    company: Synteda AB
+    role: ServiceNow-utvecklare
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: synteda-ab-developer-39359f
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31379940
+    company: Synteda AB
+    role: Developer
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: synteda-ab-ai-developer-39359f
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31379924
+    company: Synteda AB
+    role: AI developer
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: uddevalla-kommun-utvecklare-inom-webb-och-kommunikation-till-soci-3932cf
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31373395
+    company: UDDEVALLA KOMMUN
+    role: Utvecklare inom webb och kommunikation till socialtjänsten
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: vaxjo-kommun-bi-utvecklare-vaxjo-kommun-392356
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31360268
+    company: VÄXJÖ KOMMUN
+    role: BI-utvecklare - Växjö kommun
+    mode: Sweden
+    region: Sweden
+    state: skipped
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: BI-only — outside target archetypes
+    updated: '2026-09-11'
+    source: shortlist
+  - id: veritaz-ab-ci-cd-platform-engineer-developer-experience-eng-38f980
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31331131
+    company: Veritaz AB
+    role: CI/CD Platform Engineer / Developer Experience Engineer - 18663
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: vizzit-international-ab-ai-utvecklare-projektanstallning-for-lokal-faq-r-39235d
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31360409
+    company: Vizzit International AB
+    role: AI-utvecklare  projektanställning för lokal FAQ-/RAG-lösning
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: volvo-business-services-aktiebolag-developer-platform-engineer-38ef22
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31329724
+    company: VOLVO BUSINESS SERVICES AKTIEBOLAG
+    role: Developer Platform Engineer
+    mode: Sweden
+    region: Sweden
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: avaron-ab-senior-net-utvecklare-inom-cloud-och-arkitektur-39351f
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31378617
+    company: Avaron AB
+    role: Senior .NET-utvecklare inom cloud och arkitektur
+    mode: Sweden
+    region: Sweden
+    state: skipped
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: .NET-only / no modern JS-TS frontend path
+    updated: '2026-09-11'
+    source: shortlist
+  - id: new-terms-ab-senior-net-utvecklare-for-rekrytering-till-spann-390ac3
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31348074
+    company: New Terms AB
+    role: Senior .Net-utvecklare för rekrytering till spännande konsultbolag
+    mode: Sweden
+    region: Sweden
+    state: skipped
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: .NET-only / no modern JS-TS frontend path
+    updated: '2026-09-11'
+    source: shortlist
+  - id: tng-group-ab-senior-c-net-utvecklare-till-ica-banken-i-boras-38dcdd
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31310179
+    company: TNG Group AB
+    role: Senior C#/.Net-utvecklare till ICA Banken i Borås
+    mode: Sweden
+    region: Sweden
+    state: skipped
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: .NET-only / no modern JS-TS frontend path
+    updated: '2026-09-11'
+    source: shortlist
+  - id: 2complete-ab-net-utvecklare-till-agio-392446
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31362411
+    company: 2Complete AB
+    role: .NET-utvecklare till Agio
+    mode: Sweden
+    region: Sweden
+    state: skipped
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: .NET-only / no modern JS-TS frontend path
+    updated: '2026-09-11'
+    source: shortlist
+  - id: alten-sverige-aktiebolag-software-developer-java-c-392693
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31367612
+    company: Alten Sverige Aktiebolag
+    role: Software Developer - Java/C#
+    mode: Sweden
+    region: Sweden
+    state: skipped
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: .NET-only / no modern JS-TS frontend path
+    updated: '2026-09-11'
+    source: shortlist
+  - id: avaron-ab-c-utvecklare-inom-integrationer-3925a7
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31365522
+    company: Avaron AB
+    role: C#-utvecklare inom integrationer
+    mode: Sweden
+    region: Sweden
+    state: skipped
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: .NET-only / no modern JS-TS frontend path
+    updated: '2026-09-11'
+    source: shortlist
+  - id: friday-vast-ab-c-net-utvecklare-till-avancerade-tekniska-stodsy-390aca
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31348224
+    company: Friday Väst AB
+    role: C#/.NET-utvecklare till avancerade tekniska stödsystem i Arboga
+    mode: Sweden
+    region: Sweden
+    state: skipped
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: .NET-only / no modern JS-TS frontend path
+    updated: '2026-09-11'
+    source: shortlist
+  - id: gigstep-ab-c-net-utvecklare-till-vaxande-utvecklingsteam-38fcab
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31338012
+    company: Gigstep AB
+    role: C#/.NET-utvecklare till växande utvecklingsteam
+    mode: Sweden
+    region: Sweden
+    state: skipped
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: .NET-only / no modern JS-TS frontend path
+    updated: '2026-09-11'
+    source: shortlist
+  - id: konsultia-ab-java-utvecklare-390733
+    url: https://arbetsformedlingen.se/platsbanken/annonser/31340569
+    company: Konsultia AB
+    role: Java Utvecklare
+    mode: Sweden
+    region: Sweden
+    state: skipped
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: Java-only / no modern JS-TS frontend path
+    updated: '2026-09-11'
+    source: shortlist
+  - id: autodesk-senior-full-stack-software-engineer-c07969
+    url: https://jobicy.com/jobs/150366-senior-full-stack-software-engineer
+    company: Autodesk
+    role: Senior Full-Stack Software Engineer
+    mode: Remote
+    region: Remote
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: circle-senior-full-stack-software-engineer-discover-41b2c4
+    url: https://himalayas.app/companies/circle/jobs/senior-full-stack-software-engineer-discover
+    company: Circle
+    role: Senior Full-Stack Software Engineer, Discover
+    mode: Remote
+    region: Remote
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: circle-senior-full-stack-software-engineer-ai-core-db7062
+    url: https://himalayas.app/companies/circle/jobs/senior-full-stack-software-engineer-ai-core
+    company: Circle
+    role: Senior Full-Stack Software Engineer, AI Core
+    mode: Remote
+    region: Remote
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: clera-staff-fullstack-engineer-824b7e
+    url: https://himalayas.app/companies/clera/jobs/staff-fullstack-engineer-1556947758
+    company: Clera
+    role: Staff Fullstack Engineer
+    mode: Remote
+    region: Remote
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: cookunity-staff-full-stack-engineer-horizons-dccb71
+    url: https://himalayas.app/companies/cookunity/jobs/staff-full-stack-engineer-horizons
+    company: CookUnity
+    role: Staff Full Stack Engineer, Horizons
+    mode: Remote
+    region: Remote
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: curotec-senior-full-stack-engineer-ai-llm-focused-ecf8a6
+    url: https://himalayas.app/companies/curotec/jobs/senior-full-stack-engineer-ai-llm-focused-8880795859
+    company: Curotec
+    role: Senior Full-Stack Engineer (AI/LLM-focused)
+    mode: Remote
+    region: Remote
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: empat-senior-full-stack-engineer-ai-powered-rcm-ec1738
+    url: https://himalayas.app/companies/empat/jobs/senior-full-stack-engineer-ai-powered-rcm
+    company: Empat
+    role: Senior Full-Stack Engineer, AI-Powered RCM
+    mode: Remote
+    region: Remote
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: fueled-senior-full-stack-engineer-platform-extensions-995410
+    url: https://jobicy.com/jobs/151043-senior-full-stack-engineer-platform-extensions
+    company: Fueled
+    role: Senior Full Stack Engineer — Platform Extensions
+    mode: Remote
+    region: Remote
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: gruns-senior-shopify-full-stack-developer-fc2c97
+    url: https://himalayas.app/companies/gruns/jobs/senior-shopify-full-stack-developer
+    company: Grüns
+    role: Senior Shopify Full Stack Developer
+    mode: Remote
+    region: Remote
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: immense-group-senior-fullstack-engineer-d3b5b0
+    url: https://himalayas.app/companies/immense-group/jobs/senior-fullstack-engineer-3126377965
+    company: Immense Group
+    role: Senior Fullstack Engineer
+    mode: Remote
+    region: Remote
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: interview-copilot-ai-senior-full-stack-engineer-75f14d
+    url: https://himalayas.app/companies/interview-copilot-ai/jobs/senior-full-stack-engineer
+    company: Interview Copilot AI
+    role: Senior Full-Stack Engineer
+    mode: Remote
+    region: Remote
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: moniepoint-senior-fullstack-engineer-ff8bdb
+    url: https://himalayas.app/companies/moniepoint/jobs/senior-fullstack-engineer
+    company: Moniepoint
+    role: Senior Fullstack Engineer
+    mode: Remote
+    region: Remote
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: parloa-senior-frontend-platform-engineer-f-m-d-acaf06
+    url: https://job-boards.eu.greenhouse.io/parloa/jobs/4936108101
+    company: Parloa
+    role: Senior Frontend Platform Engineer (f/m/d)*
+    mode: Remote
+    region: Remote
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: pleo-staff-frontend-engineer-design-systems-8a3e4f
+    url: https://www.remote1stjobs.com/jobs/staff-frontend-engineer-design-systems-pleo-mt5zu652
+    company: Pleo
+    role: Staff Frontend Engineer - Design Systems
+    mode: Remote
+    region: Remote
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: railsware-senior-full-stack-engineer-tradeterm-c734ab
+    url: https://himalayas.app/companies/railsware/jobs/senior-full-stack-engineer-tradeterm
+    company: Railsware
+    role: Senior Full-Stack Engineer (TradeTerm)
+    mode: Remote
+    region: Remote
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: refurbed-senior-full-stack-engineer-f-m-x-remote-724a9f
+    url: https://himalayas.app/companies/refurbed-com/jobs/senior-full-stack-engineer-f-m-x-remote-1037879720
+    company: refurbed
+    role: Senior Full-Stack Engineer (f/m/x) - remote
+    mode: Remote
+    region: Remote
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: resourceful-talent-group-senior-full-stack-engineer-ac7a7c
+    url: https://himalayas.app/companies/resourceful-talent-group/jobs/senior-full-stack-engineer
+    company: Resourceful Talent Group
+    role: Senior Full-Stack Engineer
+    mode: Remote
+    region: Remote
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: sporty-group-frontend-engineering-team-lead-61e7a4
+    url: https://himalayas.app/companies/sporty-group/jobs/frontend-engineering-team-lead
+    company: Sporty Group
+    role: Frontend Engineering Team Lead
+    mode: Remote
+    region: Remote
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: sporty-group-frontend-engineering-team-lead-martech-1d11fa
+    url: https://himalayas.app/companies/sporty-group/jobs/frontend-engineering-team-lead-martech
+    company: Sporty Group
+    role: Frontend Engineering Team Lead - MarTech
+    mode: Remote
+    region: Remote
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: yellow-card-senior-frontend-engineer-f759e5
+    url: https://himalayas.app/companies/yellow-card/jobs/senior-frontend-engineer
+    company: Yellow Card
+    role: Senior Frontend Engineer
+    mode: Remote
+    region: Remote
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: zencoder-senior-full-stack-engineer-9570da
+    url: https://himalayas.app/companies/zencoder/jobs/senior-full-stack-engineer
+    company: Zencoder
+    role: Senior Full-stack Engineer
+    mode: Remote
+    region: Remote
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: distantjob-sr-enterprise-full-stack-developer-4e457c
+    url: https://himalayas.app/companies/distantjob/jobs/sr-enterprise-full-stack-developer
+    company: DistantJob
+    role: Sr Enterprise Full Stack Developer
+    mode: Remote
+    region: Remote
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: headspin-full-stack-developer-65a96d
+    url: https://himalayas.app/companies/headspin/jobs/full-stack-developer-2046800996
+    company: HeadSpin
+    role: Full Stack Developer
+    mode: Remote
+    region: Remote
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: hellofresh-senior-react-native-product-engineer-consumer-al-8440a5
+    url: https://careers.hellofresh.com/global/en/job/8093854?gh_jid=8093854
+    company: HelloFresh
+    role: Senior React Native Product Engineer, Consumer Alliance (all genders)
+    mode: Remote
+    region: Remote
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: interview-copilot-ai-frontend-engineer-692e71
+    url: https://himalayas.app/companies/interview-copilot-ai/jobs/frontend-engineer
+    company: Interview Copilot AI
+    role: Frontend Engineer
+    mode: Remote
+    region: Remote
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: kruger-nearshore-llc-rekluti-desarrollador-full-stack-50ade5
+    url: https://remoteOK.com/remote-jobs/remote-desarrollador-full-stack-kruger-nearshore-llc-rekluti-1137062
+    company: Kruger NearShore LLC - Rekluti
+    role: DESARROLLADOR FULL STACK
+    mode: Remote
+    region: Remote
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: leime-co-full-stack-engineer-middle-792e40
+    url: https://himalayas.app/companies/leime-co/jobs/full-stack-engineer-middle
+    company: LEIME.co
+    role: Full-Stack Engineer (Middle)
+    mode: Remote
+    region: Remote
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: micro1-frontend-engineer-ce9d53
+    url: https://himalayas.app/companies/micro1/jobs/frontend-engineer-4490561315
+    company: micro1
+    role: Frontend Engineer
+    mode: Remote
+    region: Remote
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: micro1-frontend-software-engineer-cffcf2
+    url: https://himalayas.app/companies/micro1/jobs/frontend-software-engineer-3853610194
+    company: micro1
+    role: Frontend Software Engineer
+    mode: Remote
+    region: Remote
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: micro1-full-stack-developer-34cc7c
+    url: https://himalayas.app/companies/micro1/jobs/full-stack-developer-3968996559
+    company: micro1
+    role: Full Stack Developer
+    mode: Remote
+    region: Remote
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: mindrift-freelance-full-stack-web-app-developer-b36be9
+    url: https://himalayas.app/companies/mindrift/jobs/freelance-full-stack-web-app-developer-3225547828
+    company: Mindrift
+    role: Freelance Full-Stack Web App Developer
+    mode: Remote
+    region: Remote
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: native-front-end-engineer-2d80e6
+    url: https://himalayas.app/companies/native/jobs/front-end-engineer
+    company: Native
+    role: Front-End Engineer
+    mode: Remote
+    region: Remote
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: native-full-stack-developer-aa6f9c
+    url: https://himalayas.app/companies/native/jobs/full-stack-developer
+    company: Native
+    role: Full Stack Developer
+    mode: Remote
+    region: Remote
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: new-era-technology-full-stack-software-engineer-c40478
+    url: https://himalayas.app/companies/new-era-technology/jobs/full-stack-software-engineer
+    company: New Era Technology
+    role: Full Stack Software Engineer
+    mode: Remote
+    region: Remote
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: talent-sam-full-stack-developer-bbe57c
+    url: https://himalayas.app/companies/talent-sam/jobs/full-stack-developer-1559067408
+    company: Talent Sam
+    role: Full Stack Developer
+    mode: Remote
+    region: Remote
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: talent-sam-front-end-developer-89bb30
+    url: https://himalayas.app/companies/talent-sam/jobs/front-end-developer
+    company: Talent Sam
+    role: Front-End Developer
+    mode: Remote
+    region: Remote
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: xktalent-inc-rimutee-desarrollador-full-stack-python-angular-go-e9a44f
+    url: https://himalayas.app/companies/rekluti/jobs/desarrollador-full-stack-python-angular-go
+    company: XKTalent Inc. - Rimutee
+    role: DESARROLLADOR FULL STACK (PYTHON + ANGULAR + GO)
+    mode: Remote
+    region: Remote
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: berlin-bytes-senior-freelance-web-developer-ecd576
+    url: https://www.arbeitnow.co.uk/jobs/companies/berlin-bytes/remote-senior-freelance-web-developer-486823
+    company: Berlin Bytes
+    role: (Senior) Freelance Web Developer
+    mode: Remote
+    region: Remote
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: fueled-contract-senior-front-end-engineer-ec8bc9
+    url: https://jobicy.com/jobs/150883-contract-senior-front-end-engineer
+    company: Fueled
+    role: Contract Senior Front End Engineer
+    mode: Remote
+    region: Remote
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: hellofresh-senior-backend-developer-scm-tech-fulfillment-9dbed6
+    url: https://careers.hellofresh.com/global/en/job/8125293?gh_jid=8125293
+    company: HelloFresh
+    role: Senior Backend Developer, SCM Tech Fulfillment
+    mode: Remote
+    region: Remote
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: lemon-io-senior-golang-developer-494bca
+    url: https://remotive.com/remote-jobs/software-development/senior-golang-developer-2091098
+    company: Lemon.io
+    role: Senior Golang Developer
+    mode: Remote
+    region: Remote
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: node-energy-senior-python-developer-w-m-d-remote-bf6bec
+    url: https://www.arbeitnow.com/jobs/companies/nodeenergy/senior-python-developer-remote-110978
+    company: node.energy
+    role: Senior Python Developer (w/m/d) - Remote
+    mode: Remote
+    region: Remote
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: we-are-meta-fullstack-developer-c-and-angular-58759b
+    url: https://landing.jobs/at/we-are-meta/fullstack-developer-c-and-angular
+    company: We Are Meta
+    role: Fullstack Developer (C# and Angular)
+    mode: Remote
+    region: Remote
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: elogic-shopify-developer-pool-78d462
+    url: https://himalayas.app/companies/elogic/jobs/shopify-developer-pool
+    company: Elogic
+    role: Shopify Developer Pool
+    mode: Remote
+    region: Remote
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: rew-technology-front-end-engineer-1da868
+    url: https://himalayas.app/companies/rew-technology/jobs/front-end-engineer
+    company: REW Technology
+    role: Front End Engineer
+    mode: Remote
+    region: Remote
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: sil-international-web-developer-33294e
+    url: https://himalayas.app/companies/sil-international/jobs/web-developer
+    company: SIL International
+    role: Web Developer
+    mode: Remote
+    region: Remote
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: the-home-depot-canada-email-developer-ab097e
+    url: https://remoteOK.com/remote-jobs/remote-email-developer-the-home-depot-canada-1136967
+    company: The Home Depot Canada
+    role: Email Developer
+    mode: Remote
+    region: Remote
+    state: discovered
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: ''
+    updated: '2026-09-11'
+    source: shortlist
+  - id: damia-group-portugal-senior-java-software-developer-389336
+    url: https://landing.jobs/at/damia-group-portugal/senior-java-software-developer-in-lisbon-2026
+    company: Damia Group Portugal
+    role: Senior Java Software Developer
+    mode: Remote
+    region: Remote
+    state: skipped
+    score: null
+    report: null
+    artifacts:
+      cv_pdf: null
+      cl_pdf: null
+    notes: Java-only / no modern JS-TS frontend path
+    updated: '2026-09-11'
+    source: shortlist
