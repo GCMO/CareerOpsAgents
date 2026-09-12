@@ -13,6 +13,9 @@ batch/batch-input.tsv
 batch/ranker-queue.json
 batch/package-queue.json
 batch/package/
+batch/form-queue.json
+batch/form/
+batch/submit-queue.json
 batch/tracker-additions/**/*.tsv
 !batch/tracker-additions/.gitkeep
 jds/*

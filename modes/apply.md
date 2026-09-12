@@ -105,3 +105,14 @@ Si el formulario tiene más preguntas que las visibles:
 - Pedir al candidato que haga scroll y comparta otro screenshot
 - O que pegue las preguntas restantes
 - Procesar en iteraciones hasta cubrir todo el formulario
+
+## Orchestrated fill (P3)
+
+For workflow-driven fill → `form_ready` (uploads + hard stop before Submit), use **`modes/form-agent.md`** and:
+
+```bash
+node workflow-runner.mjs form-queue
+node workflow-runner.mjs form-ready --id … --answers … --screenshot …
+```
+
+This interactive `apply` mode remains valid for copy-paste assistance without browser fill.

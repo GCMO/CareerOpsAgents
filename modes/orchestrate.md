@@ -38,6 +38,8 @@ Read/write `data/workflow.yml`. Canonical states:
 | `/career-ops pipeline` | Ranker on pending URLs (legacy inbox) |
 | `/career-ops ranker` | Ranker on workflow queue (P1) |
 | `/career-ops packager` | CV + CL PDFs (P2) |
+| `/career-ops form` / `form-agent` | Fill form → form_ready (P3); never submit |
+| `/career-ops submitter` | Click Submit **only** if approved (P4) |
 | `/career-ops apply` | Form Agent (fill → stop) |
 
 ## Agent roles
@@ -60,18 +62,10 @@ Read/write `data/workflow.yml`. Canonical states:
 ### 3. Packager (CV + Cover Letter)
 Follow `modes/packager.md`. Queue via `node workflow-runner.mjs package-queue`. Render CL with `node render-cl.mjs` (enforces JD requirements + product + stack + location_policy gate). Mark with `package-done`.
 ### 4. Form Agent
-1. Open ATS apply URL (Playwright)
-2. Snapshot fields; generate answers from report + CL + `profile.yml`
-3. Fill text/dropdowns; upload CV/CL PDFs when fields exist
-4. **HARD STOP** before Apply / Submit / Send
-5. Screenshot filled form; set `state: form_ready`
-6. Notify user: report num, score, artifact paths, “reply `approve submit #{num}` to submit”
+Follow `modes/form-agent.md`. Queue via `node workflow-runner.mjs form-queue`. Fill fields + upload CV/CL. **HARD STOP** before Apply/Submit/Send. Mark `form-ready` with answers JSON + screenshot.
 
 ### 5. Submitter (HITL only)
-1. Proceed only if `state: approved` or chat matches `approve submit #{num}`
-2. Click Apply/Submit; capture confirmation URL/screenshot
-3. Set `state: submitted`; update `applications.md` status → `Applied`
-4. If captcha/login blocks → revert to `form_ready` and ask user to finish
+Follow `modes/submitter.md`. Requires `approve submit #{num}` → `approve` → `submit-queue` → click once → `submit-done`. Updates tracker to Applied.
 
 ### 6. Tracker
 1. Merge TSVs; normalize statuses
@@ -98,6 +92,7 @@ When triggered by schedule (05:00 UTC) or chat `/career-ops ranker`:
 ## Ethical caps
 
 - Never mass-apply; quality over quantity
-- Never submit without human approval
+- Never submit without human approval (`approve submit #N`)
 - Strongly discourage applying when score &lt; 4.0
 - Ranker processes at most `automation.ranker.top_k` (default 10) per run
+- Submitter processes only `approved` jobs from `submit-queue`

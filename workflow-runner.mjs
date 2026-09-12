@@ -423,6 +423,35 @@ function cmdStatus() {
       cv: j.artifacts?.cv_pdf,
       cl: j.artifacts?.cl_pdf,
     }));
+  const formReady = workflow.jobs
+    .filter((j) => j.state === 'form_ready')
+    .slice(0, 10)
+    .map((j) => ({
+      id: j.id,
+      company: j.company,
+      role: j.role,
+      report_num: reportNumFromJob(j),
+      answers: j.artifacts?.answers_json,
+      screenshot: j.artifacts?.form_screenshot,
+      approve_command: `approve submit #${reportNumFromJob(j) || ''}`,
+    }));
+  const approved = workflow.jobs
+    .filter((j) => j.state === 'approved')
+    .slice(0, 10)
+    .map((j) => ({
+      id: j.id,
+      company: j.company,
+      report_num: reportNumFromJob(j),
+      approved_at: j.approved_at,
+    }));
+  const submitted = workflow.jobs
+    .filter((j) => j.state === 'submitted')
+    .slice(0, 5)
+    .map((j) => ({
+      id: j.id,
+      company: j.company,
+      confirmation_url: j.artifacts?.confirmation_url,
+    }));
   console.log(
     JSON.stringify(
       {
@@ -439,6 +468,9 @@ function cmdStatus() {
         })),
         package_eligible: packageEligible,
         recently_packaged: packaged,
+        form_ready: formReady,
+        approved,
+        submitted,
       },
       null,
       2
@@ -593,7 +625,392 @@ function cmdPackageDone() {
         id: job.id,
         state: job.state,
         artifacts: job.artifacts,
-        next: 'Form Agent (P3) or /career-ops apply — submit only after approve submit #' + (reportNumFromJob(job) || ''),
+        next: 'Form Agent (P3): node workflow-runner.mjs form-queue — submit only after approve submit #' + (reportNumFromJob(job) || ''),
+      },
+      null,
+      2
+    )
+  );
+}
+
+const SUBMIT_BLOCK_RE =
+  /\b(submit|apply(\s+now)?|send(\s+application)?|finish\s+application|complete\s+application|skicka(\s+in)?|skicka\s+ansökan|ansök)\b/i;
+
+function cmdFormQueue() {
+  const idsRaw = flagValue('--ids', '') || '';
+  const idSet = new Set(
+    idsRaw
+      .split(/[,\s]+/)
+      .map((s) => s.trim())
+      .filter(Boolean)
+  );
+  const numsRaw = flagValue('--nums', '') || '';
+  const numSet = new Set(
+    numsRaw
+      .split(/[,\s]+/)
+      .map((s) => s.replace(/^#/, '').trim())
+      .filter(Boolean)
+      .map((s) => s.padStart(3, '0'))
+  );
+
+  const workflow = loadWorkflow();
+  const selected = [];
+
+  for (const j of workflow.jobs) {
+    if (j.state !== 'packaged') continue;
+    if (!j.artifacts?.cv_pdf || !j.artifacts?.cl_pdf) continue;
+    const num = reportNumFromJob(j);
+    if (idSet.size && !idSet.has(j.id)) continue;
+    if (numSet.size && (!num || !numSet.has(num))) continue;
+
+    const slug = companySlug(j.company);
+    const n = num || 'xxx';
+    selected.push({
+      id: j.id,
+      report_num: num,
+      company: j.company,
+      role: j.role,
+      score: j.score,
+      url: j.url,
+      report: j.report,
+      cv_pdf: j.artifacts.cv_pdf,
+      cl_pdf: j.artifacts.cl_pdf,
+      answers_json: `batch/form/${n}-${slug}-answers.json`,
+      screenshot: `batch/form/${n}-${slug}-form.png`,
+      review_md: `batch/form/${n}-${slug}-review.md`,
+      submit_block_patterns: SUBMIT_BLOCK_RE.source,
+    });
+  }
+
+  mkdirSync(join(ROOT, 'batch/form'), { recursive: true });
+  const payload = {
+    generated: new Date().toISOString(),
+    selected: selected.length,
+    hard_stop: 'Never click Apply/Submit/Send/Skicka/Ansök — leave form filled and mark form-ready',
+    jobs: selected,
+    instructions: 'Follow modes/form-agent.md for each job. Fill fields, upload CV/CL, screenshot, form-ready. Do not submit.',
+  };
+
+  const outPath = join(ROOT, 'batch/form-queue.json');
+  if (!dryRun) {
+    writeFileSync(outPath, JSON.stringify(payload, null, 2) + '\n', 'utf8');
+  }
+
+  console.log(
+    JSON.stringify(
+      {
+        command: 'form-queue',
+        dryRun,
+        wrote: dryRun ? null : 'batch/form-queue.json',
+        selected: selected.length,
+        jobs: selected,
+      },
+      null,
+      2
+    )
+  );
+}
+
+function cmdFormReady() {
+  const id = flagValue('--id');
+  const answers = flagValue('--answers');
+  const screenshot = flagValue('--screenshot');
+  if (!id || !answers) {
+    console.error(
+      'Usage: node workflow-runner.mjs form-ready --id ID --answers PATH [--screenshot PATH]'
+    );
+    process.exit(1);
+  }
+
+  const workflow = loadWorkflow();
+  const job = workflow.jobs.find((j) => j.id === id);
+  if (!job) {
+    console.error(`No job with id=${id}`);
+    process.exit(1);
+  }
+  if (job.state !== 'packaged' && job.state !== 'form_ready') {
+    console.error(`Job must be packaged (or already form_ready). Current: ${job.state}`);
+    process.exit(1);
+  }
+
+  const answersPath = resolve(ROOT, answers);
+  if (!dryRun && !existsSync(answersPath)) {
+    console.error(`Answers file missing: ${answersPath}`);
+    process.exit(1);
+  }
+
+  let answersDoc = null;
+  if (!dryRun) {
+    try {
+      answersDoc = JSON.parse(readFileSync(answersPath, 'utf8'));
+    } catch (e) {
+      console.error(`Invalid answers JSON: ${e.message}`);
+      process.exit(1);
+    }
+    if (!Array.isArray(answersDoc.fields) || answersDoc.fields.length === 0) {
+      console.error('answers.json must include a non-empty fields[] array');
+      process.exit(1);
+    }
+    if (answersDoc.blocked_submit !== true) {
+      console.error('answers.json must set blocked_submit: true (HITL policy)');
+      process.exit(1);
+    }
+  }
+
+  let screenshotRel = screenshot || null;
+  if (screenshot) {
+    const shotPath = resolve(ROOT, screenshot);
+    if (!dryRun && !existsSync(shotPath)) {
+      console.error(`Screenshot missing: ${shotPath}`);
+      process.exit(1);
+    }
+    screenshotRel = screenshot;
+  }
+
+  job.state = 'form_ready';
+  job.updated = today();
+  job.artifacts = job.artifacts || {};
+  job.artifacts.answers_json = answers;
+  if (screenshotRel) job.artifacts.form_screenshot = screenshotRel;
+  job.notes = (job.notes ? job.notes + '; ' : '') + 'form_ready (P3) — awaiting approve submit';
+
+  saveWorkflow(workflow);
+  const num = reportNumFromJob(job);
+  console.log(
+    JSON.stringify(
+      {
+        command: 'form-ready',
+        dryRun,
+        id: job.id,
+        state: job.state,
+        artifacts: job.artifacts,
+        approve_command: `approve submit #${num || ''}`,
+        next: 'Human reviews screenshot + answers. Only then: approve submit #' + (num || ''),
+      },
+      null,
+      2
+    )
+  );
+}
+
+function findJobByNumOrId(workflow) {
+  const id = flagValue('--id');
+  const numRaw = flagValue('--num');
+  if (id) {
+    const job = workflow.jobs.find((j) => j.id === id);
+    if (!job) {
+      console.error(`No job with id=${id}`);
+      process.exit(1);
+    }
+    return job;
+  }
+  if (numRaw) {
+    const num = String(numRaw).replace(/^#/, '').padStart(3, '0');
+    const job = workflow.jobs.find((j) => reportNumFromJob(j) === num);
+    if (!job) {
+      console.error(`No job with report num=${num}`);
+      process.exit(1);
+    }
+    return job;
+  }
+  console.error('Provide --id ID or --num NNN');
+  process.exit(1);
+}
+
+function updateApplicationsStatus(reportNum, company, newStatus, noteExtra) {
+  const appsPath = join(ROOT, 'data/applications.md');
+  if (!existsSync(appsPath)) return { updated: false, reason: 'applications.md missing' };
+  const raw = readFileSync(appsPath, 'utf8');
+  const lines = raw.split('\n');
+  const num = String(reportNum).replace(/^#/, '').padStart(3, '0');
+  const numInt = String(parseInt(num, 10));
+  let updated = false;
+  const out = lines.map((line) => {
+    if (!line.startsWith('|')) return line;
+    const cols = line.split('|').map((c) => c.trim());
+    // | # | Date | Company | Role | Score | Status | PDF | Report | Notes |
+    if (cols.length < 9) return line;
+    const rowNum = cols[1];
+    if (rowNum !== num && rowNum !== numInt) return line;
+    // optional company soft-check
+    if (company && cols[3] && !cols[3].toLowerCase().includes(String(company).toLowerCase().slice(0, 12))) {
+      // still update if num matches — report number is source of truth
+    }
+    cols[6] = newStatus;
+    if (noteExtra) {
+      const notes = cols[9] || '';
+      cols[9] = notes && notes !== 'Notes' ? `${notes}; ${noteExtra}` : noteExtra;
+    }
+    updated = true;
+    return '| ' + cols.slice(1, -1).join(' | ') + ' |';
+  });
+  if (updated && !dryRun) {
+    writeFileSync(appsPath, out.join('\n'), 'utf8');
+  }
+  return { updated, path: 'data/applications.md' };
+}
+
+function cmdApprove() {
+  const profile = loadProfile();
+  const skipBelow = profile?.automation?.score_gates?.auto_skip_below ?? 4.0;
+  const workflow = loadWorkflow();
+  const job = findJobByNumOrId(workflow);
+
+  if (job.state !== 'form_ready' && job.state !== 'approved') {
+    console.error(`approve requires form_ready (got ${job.state}). Complete P3 first.`);
+    process.exit(1);
+  }
+  if (job.score != null && Number(job.score) < skipBelow) {
+    console.error(`Refuse approve: score ${job.score} < ${skipBelow}. Quality gate.`);
+    process.exit(1);
+  }
+
+  job.state = 'approved';
+  job.updated = today();
+  job.approved_at = new Date().toISOString();
+  job.notes = (job.notes ? job.notes + '; ' : '') + 'approved for submit (P4 HITL)';
+
+  saveWorkflow(workflow);
+  const num = reportNumFromJob(job);
+  console.log(
+    JSON.stringify(
+      {
+        command: 'approve',
+        dryRun,
+        id: job.id,
+        state: job.state,
+        report_num: num,
+        next: `Agent may run submit-queue / submitter for #${num}. Or: /career-ops submitter`,
+      },
+      null,
+      2
+    )
+  );
+}
+
+function cmdRevokeApprove() {
+  const workflow = loadWorkflow();
+  const job = findJobByNumOrId(workflow);
+  if (job.state !== 'approved') {
+    console.error(`revoke-approve requires state approved (got ${job.state})`);
+    process.exit(1);
+  }
+  job.state = 'form_ready';
+  job.updated = today();
+  delete job.approved_at;
+  job.notes = (job.notes ? job.notes + '; ' : '') + 'approval revoked → form_ready';
+  saveWorkflow(workflow);
+  console.log(JSON.stringify({ command: 'revoke-approve', dryRun, id: job.id, state: job.state }, null, 2));
+}
+
+function cmdSubmitQueue() {
+  const workflow = loadWorkflow();
+  const selected = workflow.jobs
+    .filter((j) => j.state === 'approved')
+    .map((j) => {
+      const num = reportNumFromJob(j);
+      const slug = companySlug(j.company);
+      const n = num || 'xxx';
+      return {
+        id: j.id,
+        report_num: num,
+        company: j.company,
+        role: j.role,
+        score: j.score,
+        url: j.url,
+        cv_pdf: j.artifacts?.cv_pdf,
+        cl_pdf: j.artifacts?.cl_pdf,
+        answers_json: j.artifacts?.answers_json,
+        confirmation_screenshot: `batch/form/${n}-${slug}-submitted.png`,
+        approved_at: j.approved_at || null,
+      };
+    });
+
+  mkdirSync(join(ROOT, 'batch/form'), { recursive: true });
+  const payload = {
+    generated: new Date().toISOString(),
+    selected: selected.length,
+    policy: 'human_approve_only',
+    jobs: selected,
+    instructions:
+      'Follow modes/submitter.md. Click Apply/Submit once per job. Then submit-done with confirmation URL + screenshot. Empty queue = do nothing.',
+  };
+  if (!dryRun) {
+    writeFileSync(join(ROOT, 'batch/submit-queue.json'), JSON.stringify(payload, null, 2) + '\n', 'utf8');
+  }
+  console.log(
+    JSON.stringify(
+      {
+        command: 'submit-queue',
+        dryRun,
+        wrote: dryRun ? null : 'batch/submit-queue.json',
+        selected: selected.length,
+        jobs: selected,
+      },
+      null,
+      2
+    )
+  );
+}
+
+function cmdSubmitDone() {
+  const id = flagValue('--id');
+  const confirmationUrl = flagValue('--confirmation-url');
+  const screenshot = flagValue('--screenshot');
+  const notes = flagValue('--notes', '') || '';
+  if (!id || !confirmationUrl) {
+    console.error(
+      'Usage: node workflow-runner.mjs submit-done --id ID --confirmation-url URL [--screenshot PATH] [--notes TEXT]'
+    );
+    process.exit(1);
+  }
+
+  const workflow = loadWorkflow();
+  const job = workflow.jobs.find((j) => j.id === id);
+  if (!job) {
+    console.error(`No job with id=${id}`);
+    process.exit(1);
+  }
+  if (job.state !== 'approved' && job.state !== 'submitted') {
+    console.error(`submit-done requires approved (got ${job.state}). Run approve first.`);
+    process.exit(1);
+  }
+
+  if (screenshot) {
+    const shotPath = resolve(ROOT, screenshot);
+    if (!dryRun && !existsSync(shotPath)) {
+      console.error(`Screenshot missing: ${shotPath}`);
+      process.exit(1);
+    }
+  }
+
+  job.state = 'submitted';
+  job.updated = today();
+  job.submitted_at = new Date().toISOString();
+  job.artifacts = job.artifacts || {};
+  job.artifacts.confirmation_url = confirmationUrl;
+  if (screenshot) job.artifacts.confirmation_screenshot = screenshot;
+  job.notes =
+    (job.notes ? job.notes + '; ' : '') +
+    `submitted (P4)${notes ? ' — ' + notes : ''}`;
+
+  const num = reportNumFromJob(job);
+  const tracker = num
+    ? updateApplicationsStatus(num, job.company, 'Applied', `submitted ${today()}`)
+    : { updated: false, reason: 'no report num' };
+
+  saveWorkflow(workflow);
+  console.log(
+    JSON.stringify(
+      {
+        command: 'submit-done',
+        dryRun,
+        id: job.id,
+        state: job.state,
+        confirmation_url: confirmationUrl,
+        artifacts: job.artifacts,
+        tracker,
+        next: 'Optional: /career-ops followup or contacto — do not auto-send',
       },
       null,
       2
@@ -677,6 +1094,12 @@ function usage() {
   node workflow-runner.mjs queue [--limit N] [--dry-run]
   node workflow-runner.mjs package-queue [--override 142,155] [--ids id1,id2] [--dry-run]
   node workflow-runner.mjs package-done --id ID --cv PATH --cl PATH
+  node workflow-runner.mjs form-queue [--ids id1,id2] [--nums 008,009] [--dry-run]
+  node workflow-runner.mjs form-ready --id ID --answers PATH [--screenshot PATH]
+  node workflow-runner.mjs approve --num NNN | --id ID
+  node workflow-runner.mjs revoke-approve --num NNN | --id ID
+  node workflow-runner.mjs submit-queue [--dry-run]
+  node workflow-runner.mjs submit-done --id ID --confirmation-url URL [--screenshot PATH] [--notes TEXT]
   node workflow-runner.mjs status
   node workflow-runner.mjs mark --id ID --state STATE [--score X.X] [--report PATH] [--notes TEXT]`);
 }
@@ -695,6 +1118,24 @@ async function main() {
       break;
     case 'package-done':
       cmdPackageDone();
+      break;
+    case 'form-queue':
+      cmdFormQueue();
+      break;
+    case 'form-ready':
+      cmdFormReady();
+      break;
+    case 'approve':
+      cmdApprove();
+      break;
+    case 'revoke-approve':
+      cmdRevokeApprove();
+      break;
+    case 'submit-queue':
+      cmdSubmitQueue();
+      break;
+    case 'submit-done':
+      cmdSubmitDone();
       break;
     case 'status':
       cmdStatus();

@@ -1,5 +1,5 @@
 version: 1
-updated: '2026-09-11'
+updated: '2026-09-12'
 defaults:
   submit_policy: human_approve_only
   auto_skip_below: 4

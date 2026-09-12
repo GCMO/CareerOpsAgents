@@ -19,6 +19,8 @@
     "workflow:queue": "node workflow-runner.mjs queue",
     "workflow:status": "node workflow-runner.mjs status",
     "workflow:package-queue": "node workflow-runner.mjs package-queue",
+    "workflow:form-queue": "node workflow-runner.mjs form-queue",
+    "workflow:submit-queue": "node workflow-runner.mjs submit-queue",
     "cl": "node render-cl.mjs"
   },
   "keywords": [

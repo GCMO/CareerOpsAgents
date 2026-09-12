@@ -3,7 +3,7 @@ name: career-ops
 description: AI job search command center -- evaluate offers, generate CVs, scan portals, track applications
 user_invocable: true
 args: mode
-argument-hint: "[scan | deep | pdf | oferta | ofertas | apply | batch | tracker | pipeline | contacto | training | project | interview-prep | followup | orchestrate | ranker | packager | update]"
+argument-hint: "[scan | deep | pdf | oferta | ofertas | apply | batch | tracker | pipeline | contacto | training | project | interview-prep | followup | orchestrate | ranker | packager | form-agent | submitter | update]"
 ---
 
 # career-ops -- Router
@@ -33,6 +33,9 @@ Determine the mode from `{{mode}}`:
 | `orchestrate` | `orchestrate` |
 | `ranker` | `ranker` |
 | `packager` | `packager` |
+| `form-agent` | `form-agent` |
+| `form` | `form-agent` |
+| `submitter` | `submitter` |
 
 **Auto-pipeline detection:** If `{{mode}}` is not a known sub-command AND contains JD text (keywords: "responsibilities", "requirements", "qualifications", "about the role", "we're looking for", company name + role) or a URL to a JD, execute `auto-pipeline`.
 
@@ -66,6 +69,8 @@ Available commands:
   /career-ops orchestrate → Agent workflow: Scout → Ranker → Packager → Form → HITL submit
   /career-ops ranker      → Evaluate top-K discovered jobs (A-G + tracker; no submit)
   /career-ops packager    → CV + cover-letter PDFs for eligible/override jobs
+  /career-ops form-agent  → Fill ATS form to form_ready (never submit)
+  /career-ops submitter   → Click Submit only after approve submit #N
 
 Inbox: add URLs to data/pipeline.md → /career-ops pipeline
 Or paste a JD directly to run the full pipeline.
@@ -85,7 +90,7 @@ Applies to: `auto-pipeline`, `oferta`, `ofertas`, `pdf`, `contacto`, `apply`, `p
 ### Standalone modes (only their mode file):
 Read `modes/{mode}.md`
 
-Applies to: `tracker`, `deep`, `training`, `project`, `patterns`, `followup`, `orchestrate`, `ranker`, `packager`
+Applies to: `tracker`, `deep`, `training`, `project`, `patterns`, `followup`, `orchestrate`, `ranker`, `packager`, `form-agent`, `submitter`
 
 ### Modes delegated to subagent:
 For `scan`, `apply` (with Playwright), and `pipeline` (3+ URLs): launch as Agent with the content of `_shared.md` + `modes/{mode}.md` injected into the subagent prompt.

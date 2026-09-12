@@ -1,0 +1,28 @@
+{
+  "id": "example-job-id",
+  "report_num": "008",
+  "company": "Example Co",
+  "role": "Frontend Engineer",
+  "url": "https://example.com/jobs/apply",
+  "cv_pdf": "output/008-example-co-cv.pdf",
+  "cl_pdf": "output/008-example-co-cl.pdf",
+  "fields": [
+    {
+      "label": "Why are you interested in this role?",
+      "type": "text",
+      "value": "…"
+    },
+    {
+      "label": "Resume",
+      "type": "upload",
+      "value": "output/008-example-co-cv.pdf"
+    },
+    {
+      "label": "Cover letter",
+      "type": "upload",
+      "value": "output/008-example-co-cl.pdf"
+    }
+  ],
+  "blocked_submit": true,
+  "notes": ["Do not click Submit — awaiting approve submit #008"]
+}

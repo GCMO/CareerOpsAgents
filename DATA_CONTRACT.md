@@ -48,6 +48,8 @@ These files contain system logic, scripts, templates, and instructions that impr
 | `modes/orchestrate.md` | End-to-end agent orchestration |
 | `modes/ranker.md` | Ranker (evaluate discovered queue) |
 | `modes/packager.md` | Packager (CV + CL PDFs) |
+| `modes/form-agent.md` | Form Agent (fill → form_ready, HITL submit) |
+| `modes/submitter.md` | Submitter (approve → click Submit → Applied) |
 | `modes/de/*` | German language modes |
 | `CLAUDE.md` | Agent instructions |
 | `AGENTS.md` | Codex instructions |
