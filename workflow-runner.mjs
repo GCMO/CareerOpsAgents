@@ -13,7 +13,7 @@
  */
 
 import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync } from 'fs';
-import { join, dirname } from 'path';
+import { join, dirname, resolve } from 'path';
 import { fileURLToPath } from 'url';
 import yaml from 'js-yaml';
 
@@ -397,11 +397,32 @@ function cmdQueue() {
 
 function cmdStatus() {
   const workflow = loadWorkflow();
+  const profile = loadProfile();
+  const packageAt = profile?.automation?.score_gates?.auto_package_at_or_above ?? 4.5;
   const counts = {};
   for (const j of workflow.jobs) {
     counts[j.state] = (counts[j.state] || 0) + 1;
   }
   const discovered = sortQueue(workflow.jobs.filter((j) => j.state === 'discovered')).slice(0, 5);
+  const packageEligible = workflow.jobs
+    .filter((j) => j.state === 'evaluated' && j.score != null && Number(j.score) >= packageAt)
+    .slice(0, 10)
+    .map((j) => ({
+      id: j.id,
+      company: j.company,
+      role: j.role,
+      score: j.score,
+      report: j.report,
+    }));
+  const packaged = workflow.jobs
+    .filter((j) => j.state === 'packaged')
+    .slice(0, 5)
+    .map((j) => ({
+      id: j.id,
+      company: j.company,
+      cv: j.artifacts?.cv_pdf,
+      cl: j.artifacts?.cl_pdf,
+    }));
   console.log(
     JSON.stringify(
       {
@@ -416,6 +437,163 @@ function cmdStatus() {
           region: j.region || j.mode,
           url: j.url,
         })),
+        package_eligible: packageEligible,
+        recently_packaged: packaged,
+      },
+      null,
+      2
+    )
+  );
+}
+
+function companySlug(company) {
+  return slugify(company) || 'company';
+}
+
+function reportNumFromJob(job) {
+  if (job.report_num) return String(job.report_num).padStart(3, '0');
+  if (job.report) {
+    const m = String(job.report).match(/(?:^|\/)(\d{3})-/);
+    if (m) return m[1];
+  }
+  return null;
+}
+
+function cmdPackageQueue() {
+  const profile = loadProfile();
+  const packageAt = profile?.automation?.score_gates?.auto_package_at_or_above ?? 4.5;
+  const skipBelow = profile?.automation?.score_gates?.auto_skip_below ?? 4.0;
+  const overrideRaw = flagValue('--override', '') || '';
+  const overrideNums = new Set(
+    overrideRaw
+      .split(/[,\s]+/)
+      .map((s) => s.replace(/^#/, '').trim())
+      .filter(Boolean)
+      .map((s) => s.padStart(3, '0'))
+  );
+  const idsRaw = flagValue('--ids', '') || '';
+  const idSet = new Set(
+    idsRaw
+      .split(/[,\s]+/)
+      .map((s) => s.trim())
+      .filter(Boolean)
+  );
+
+  const workflow = loadWorkflow();
+  const selected = [];
+
+  for (const j of workflow.jobs) {
+    const num = reportNumFromJob(j);
+    const score = j.score == null ? null : Number(j.score);
+    const already = j.state === 'packaged' || j.state === 'form_ready' || j.state === 'approved' || j.state === 'submitted';
+    if (already) continue;
+
+    if (idSet.size && !idSet.has(j.id)) continue;
+
+    const forced = (num && overrideNums.has(num)) || idSet.has(j.id);
+    const eligible =
+      j.state === 'evaluated' && score != null && score >= packageAt;
+    const overrideBand =
+      forced &&
+      j.state === 'evaluated' &&
+      score != null &&
+      score >= skipBelow &&
+      score < packageAt;
+
+    if (!eligible && !overrideBand && !(forced && j.state === 'evaluated')) continue;
+
+    const slug = companySlug(j.company);
+    const n = num || 'xxx';
+    selected.push({
+      id: j.id,
+      report_num: num,
+      company: j.company,
+      role: j.role,
+      score,
+      report: j.report,
+      url: j.url,
+      override: Boolean(overrideBand || (forced && !eligible)),
+      cv_pdf: `output/${n}-${slug}-cv.pdf`,
+      cl_pdf: `output/${n}-${slug}-cl.pdf`,
+      cl_json: `batch/package/${n}-${slug}-cl.json`,
+    });
+  }
+
+  mkdirSync(join(ROOT, 'batch/package'), { recursive: true });
+  const payload = {
+    generated: new Date().toISOString(),
+    package_at_or_above: packageAt,
+    selected: selected.length,
+    jobs: selected,
+    instructions:
+      'For each job follow modes/packager.md: write CV PDF + CL JSON, run render-cl.mjs, then package-done. Never submit.',
+  };
+
+  const outPath = join(ROOT, 'batch/package-queue.json');
+  if (!dryRun) {
+    writeFileSync(outPath, JSON.stringify(payload, null, 2) + '\n', 'utf8');
+  }
+
+  console.log(
+    JSON.stringify(
+      {
+        command: 'package-queue',
+        dryRun,
+        wrote: dryRun ? null : 'batch/package-queue.json',
+        selected: selected.length,
+        jobs: selected,
+      },
+      null,
+      2
+    )
+  );
+}
+
+function cmdPackageDone() {
+  const id = flagValue('--id');
+  const cv = flagValue('--cv');
+  const cl = flagValue('--cl');
+  if (!id || !cv || !cl) {
+    console.error('Usage: node workflow-runner.mjs package-done --id ID --cv PATH --cl PATH');
+    process.exit(1);
+  }
+  const workflow = loadWorkflow();
+  const job = workflow.jobs.find((j) => j.id === id);
+  if (!job) {
+    console.error(`No job with id=${id}`);
+    process.exit(1);
+  }
+
+  const cvPath = resolve(ROOT, cv);
+  const clPath = resolve(ROOT, cl);
+  if (!dryRun) {
+    if (!existsSync(cvPath)) {
+      console.error(`CV PDF missing: ${cvPath}`);
+      process.exit(1);
+    }
+    if (!existsSync(clPath)) {
+      console.error(`CL PDF missing: ${clPath}`);
+      process.exit(1);
+    }
+  }
+
+  job.state = 'packaged';
+  job.updated = today();
+  job.artifacts = job.artifacts || {};
+  job.artifacts.cv_pdf = cv;
+  job.artifacts.cl_pdf = cl;
+  job.notes = (job.notes ? job.notes + '; ' : '') + 'packaged (P2)';
+
+  saveWorkflow(workflow);
+  console.log(
+    JSON.stringify(
+      {
+        command: 'package-done',
+        dryRun,
+        id: job.id,
+        state: job.state,
+        artifacts: job.artifacts,
+        next: 'Form Agent (P3) or /career-ops apply — submit only after approve submit #' + (reportNumFromJob(job) || ''),
       },
       null,
       2
@@ -497,6 +675,8 @@ function usage() {
   console.log(`Usage:
   node workflow-runner.mjs sync-discovered [--dry-run] [--include-checkboxes] [--no-prune]
   node workflow-runner.mjs queue [--limit N] [--dry-run]
+  node workflow-runner.mjs package-queue [--override 142,155] [--ids id1,id2] [--dry-run]
+  node workflow-runner.mjs package-done --id ID --cv PATH --cl PATH
   node workflow-runner.mjs status
   node workflow-runner.mjs mark --id ID --state STATE [--score X.X] [--report PATH] [--notes TEXT]`);
 }
@@ -509,6 +689,12 @@ async function main() {
       break;
     case 'queue':
       cmdQueue();
+      break;
+    case 'package-queue':
+      cmdPackageQueue();
+      break;
+    case 'package-done':
+      cmdPackageDone();
       break;
     case 'status':
       cmdStatus();

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{{CANDIDATE_NAME}} — Cover Letter — {{COMPANY}}</title>
+<style>
+  @page { size: A4; margin: 18mm 18mm 18mm 18mm; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 10.5px;
+    line-height: 1.45;
+    color: #1a1a1a;
+    background: #fff;
+  }
+  .page { width: 100%; max-width: 174mm; margin: 0 auto; }
+
+  .banner {
+    background: #8ec0d8;
+    color: #fff;
+    padding: 14px 16px;
+    margin-bottom: 16px;
+  }
+  .banner h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    margin-bottom: 4px;
+  }
+  .banner .meta {
+    font-size: 9.5px;
+    color: #f5fbfd;
+    line-height: 1.4;
+  }
+
+  .meta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 16px;
+    margin-bottom: 14px;
+    font-size: 10px;
+  }
+  .meta-grid strong {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #5a8fa8;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: #5a8fa8;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin: 14px 0 6px;
+  }
+
+  p { margin-bottom: 8px; }
+
+  ul {
+    margin: 4px 0 10px 16px;
+  }
+  li { margin-bottom: 5px; }
+
+  .sign {
+    margin-top: 16px;
+  }
+  .sign .name {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    margin-top: 8px;
+  }
+  .sign .contact {
+    font-size: 9.5px;
+    color: #333;
+  }
+
+  .gate-note {
+    display: none;
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+    <div class="banner">
+      <h1>{{CANDIDATE_NAME}}</h1>
+      <div class="meta">Cover letter · {{COMPANY}} · {{ROLE}}</div>
+    </div>
+
+    <div class="meta-grid">
+      <div>
+        <strong>Object</strong>
+        {{OBJECT}}
+      </div>
+      <div>
+        <strong>Date</strong>
+        {{DATE}}
+      </div>
+      <div style="grid-column: 1 / -1;">
+        <strong>Att.</strong>
+        {{ATT}}
+      </div>
+    </div>
+
+    <p>{{OPENING}}</p>
+
+    <h2>{{FIT_HEADING}}</h2>
+    {{FIT_BODY}}
+
+    <h2>{{BRING_HEADING}}</h2>
+    <ul>
+      {{BRING_BULLETS}}
+    </ul>
+
+    <p>{{CLOSING}}</p>
+
+    <div class="sign">
+      <p>Best wishes,</p>
+      <div class="name">{{CANDIDATE_NAME}}</div>
+      <div class="contact">{{EMAIL}} · {{PHONE}}{{PORTFOLIO_LINE}}</div>
+    </div>
+  </div>
+</body>
+</html>

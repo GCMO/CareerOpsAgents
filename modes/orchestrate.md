@@ -32,10 +32,12 @@ Read/write `data/workflow.yml`. Canonical states:
 | Command | Action |
 |---------|--------|
 | `package {num...}` | Packager for listed report nums (override allowed for 4.0–4.4) |
+| `package eligible` | Packager for all evaluated ≥4.5 |
 | `approve submit #{num}` | Set `approved` → Submitter may click Apply/Submit |
 | `/career-ops scan` | Scout (manual) |
 | `/career-ops pipeline` | Ranker on pending URLs (legacy inbox) |
 | `/career-ops ranker` | Ranker on workflow queue (P1) |
+| `/career-ops packager` | CV + CL PDFs (P2) |
 | `/career-ops apply` | Form Agent (fill → stop) |
 
 ## Agent roles
@@ -56,28 +58,7 @@ Read/write `data/workflow.yml`. Canonical states:
 6. If score &lt; `auto_skip_below` (4.0) → `skipped` (recommend against apply)
 
 ### 3. Packager (CV + Cover Letter)
-For each job in `evaluated` / user `package` list:
-
-1. Load `cv.md`, `modes/_profile.md`, report, JD
-2. Generate tailored CV PDF (GOCV layout preference) → `output/{num}-{company-slug}-cv.pdf`
-3. Generate cover letter PDF → `output/{num}-{company-slug}-cl.pdf`
-
-**CL quality gate — all four required or regenerate:**
-1. **Employer-specific JD requirements** — address requirements stated in that JD (not generic FE fluff)
-2. **Product** — what the company/product does and why it fits
-3. **Stack** — their stated stack mapped to React/Next.js/TS/Node proof
-4. **Location policy** — Stockholm hybrid / remote worldwide rules from profile
-
-Refuse output if swapping the company name would still make the letter read as valid.
-
-CL skeleton (keep structure, rewrite content):
-- Object / Date / Att.
-- Opening + **Am I a good fit?**
-- **What will I bring?** (bullets tied to JD)
-- Close with location + call to conversation
-
-4. Set workflow `state: packaged`; record artifact paths
-
+Follow `modes/packager.md`. Queue via `node workflow-runner.mjs package-queue`. Render CL with `node render-cl.mjs` (enforces JD requirements + product + stack + location_policy gate). Mark with `package-done`.
 ### 4. Form Agent
 1. Open ATS apply URL (Playwright)
 2. Snapshot fields; generate answers from report + CL + `profile.yml`

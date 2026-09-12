@@ -11,6 +11,8 @@ batch/logs/*
 batch/batch-state.tsv
 batch/batch-input.tsv
 batch/ranker-queue.json
+batch/package-queue.json
+batch/package/
 batch/tracker-additions/**/*.tsv
 !batch/tracker-additions/.gitkeep
 jds/*

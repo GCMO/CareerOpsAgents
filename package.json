@@ -17,7 +17,9 @@
     "scan": "node scan.mjs",
     "workflow:sync": "node workflow-runner.mjs sync-discovered",
     "workflow:queue": "node workflow-runner.mjs queue",
-    "workflow:status": "node workflow-runner.mjs status"
+    "workflow:status": "node workflow-runner.mjs status",
+    "workflow:package-queue": "node workflow-runner.mjs package-queue",
+    "cl": "node render-cl.mjs"
   },
   "keywords": [
     "ai",
