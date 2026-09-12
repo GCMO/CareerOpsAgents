@@ -50,6 +50,8 @@ These files contain system logic, scripts, templates, and instructions that impr
 | `modes/packager.md` | Packager (CV + CL PDFs) |
 | `modes/form-agent.md` | Form Agent (fill → form_ready, HITL submit) |
 | `modes/submitter.md` | Submitter (approve → click Submit → Applied) |
+| `modes/automation-monday-scout.md` | Cursor Automation prompt — Monday Scout |
+| `modes/automation-monday-ranker.md` | Cursor Automation prompt — Monday Ranker |
 | `modes/de/*` | German language modes |
 | `CLAUDE.md` | Agent instructions |
 | `AGENTS.md` | Codex instructions |

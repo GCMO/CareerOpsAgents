@@ -73,18 +73,24 @@ Follow `modes/submitter.md`. Requires `approve submit #{num}` → `approve` → 
 
 ## Monday Automation (Scout only)
 
+**Source of truth for Cursor Automation prompts:** [`modes/automation-monday-scout.md`](automation-monday-scout.md)
+
 When triggered by schedule (04:00 UTC):
 1. Checkout this repo
 2. `node scan.mjs`
-3. Update `data/pipeline.md` shortlists
+3. Build/prepend Sweden + Remote FE/FS shortlists under `## Pendientes` (see automation-monday-scout.md filters)
 4. `node workflow-runner.mjs sync-discovered`
-5. Reply with counts: fetched / new / Sweden FE-FS / remote FE-FS + top links
-6. Stop — Ranker is a separate run (05:00 UTC)
+5. `node workflow-runner.mjs queue --limit 10` (prepare Ranker; do not evaluate)
+6. Draft PR (never push to main)
+7. Reply with counts + top links
+8. Stop — Ranker is a separate run (05:00 UTC)
 
 ## Monday Automation (Ranker — P1)
 
+**Source of truth:** [`modes/automation-monday-ranker.md`](automation-monday-ranker.md)
+
 When triggered by schedule (05:00 UTC) or chat `/career-ops ranker`:
-1. Follow `modes/ranker.md`
+1. Follow `modes/ranker.md` / automation-monday-ranker.md
 2. `sync-discovered` → `queue` → evaluate top_k → mark states
 3. Draft PR with reports + workflow.yml + tracker merges
 4. Stop — no Packager / Form / Submit
